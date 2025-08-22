@@ -1,0 +1,76 @@
+.card {
+  position: relative;
+  height: 150px;
+  display: flex;
+  gap: 12px;
+  padding: 1.5em;
+  border-radius: 10px;
+  background-color: #fafafa;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 50px;
+
+    & .card__img {
+      transform: scale(1.05);
+      transition: all 0.25s ease-in-out;
+    }
+  }
+
+  &__description {
+  }
+
+  &__number {
+    margin-bottom: -8px;
+    font-size: 12px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  &__img {
+    position: absolute;
+    right: 0;
+    top: -10%;
+    width: 165px;
+    height: 150px;
+    transition: all 0.25s ease-out;
+  }
+}
+
+.tag {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  padding: 4px 6px;
+  border-radius: 4px;
+  background-color: #c2c2c2;
+  
+  &__text {
+    color: #ffffff;
+    font-size: 12px;
+  }
+
+  &--grass {
+    background-color: #75ce6b;
+  }
+  &--poison {
+    background-color: #b950db;
+  }
+  &--fire {
+    background-color: #ff6f4b;
+  }
+  &--water {
+    background-color: #61aef1;
+  }
+  &--bug {
+    background-color: #95c22e;
+  }
+  &--flying {
+    background-color: #80a1dd;
+  }
+}
