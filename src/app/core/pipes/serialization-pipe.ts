@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'serialization'
+  name: 'serialization',
 })
 export class SerializationPipe implements PipeTransform {
+  transform(value: number | undefined): string {
+    if (!value) return '';
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+    return String(value).padStart(3, '0');
   }
-
 }
