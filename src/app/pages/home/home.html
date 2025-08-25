@@ -20,4 +20,24 @@
     <p>skeleton...</p>
     }
   </article>
+
+  @if (loading()) {
+  <div class="flex justify-center mt-6 p-10">
+    <div
+      class="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-green-600"
+    ></div>
+  </div>
+  }
+  
+  @if (pokemons().length && !this.loading()) {
+  <article class="flex justify-center mt-6 p-10">
+    <button
+      (click)="viewMore()"
+      [disabled]="loading()"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >
+      View more
+    </button>
+  </article>
+  }
 </section>
