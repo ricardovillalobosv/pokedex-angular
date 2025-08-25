@@ -1,4 +1,4 @@
-<article [routerLink]="['/pokemon', pokemon().id]" class="card">
+<article [routerLink]="['/pokemon', pokemon().id]" class="card bg--{{ firstType }}--light">
   @defer(on viewport) {
   <div class="card__descripiton">
     <h3 class="card__number">{{ pokemon().id | serialization }}</h3>

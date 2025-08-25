@@ -13,4 +13,13 @@ import { Tag } from '@components/tag/tag';
 })
 export class PokemonCard {
   pokemon = input.required<Pokemon>();
+
+  get firstType() {
+    const pokemon = this.pokemon();
+    if (!pokemon || !pokemon.types?.length) {
+      return '';
+    }
+
+    return pokemon.types[0];
+  }
 }
