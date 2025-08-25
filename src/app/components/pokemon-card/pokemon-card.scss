@@ -41,36 +41,3 @@
     transition: all 0.25s ease-out;
   }
 }
-
-.tag {
-  display: flex;
-  gap: 2px;
-  align-items: center;
-  padding: 4px 6px;
-  border-radius: 4px;
-  background-color: #c2c2c2;
-  
-  &__text {
-    color: #ffffff;
-    font-size: 12px;
-  }
-
-  &--grass {
-    background-color: #75ce6b;
-  }
-  &--poison {
-    background-color: #b950db;
-  }
-  &--fire {
-    background-color: #ff6f4b;
-  }
-  &--water {
-    background-color: #61aef1;
-  }
-  &--bug {
-    background-color: #95c22e;
-  }
-  &--flying {
-    background-color: #80a1dd;
-  }
-}

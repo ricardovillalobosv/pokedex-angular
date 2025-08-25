@@ -6,10 +6,7 @@
 
     <div class="flex gap-2 mt-4">
       @for (type of pokemon().types; track $index) {
-      <div class="tag tag--{{ type }}">
-        <img src="assets/img/{{ type }}.png" [alt]="type" class="h-4" />
-        <span class="tag__text">{{ type | titlecase }}</span>
-      </div>
+      <app-tag [tag]="type" type />
       }
     </div>
   </div>
