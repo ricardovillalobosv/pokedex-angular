@@ -4,7 +4,7 @@
     <h3 class="card__number">{{ pokemon().id | serialization }}</h3>
     <h1 class="card__title">{{ pokemon().name | titlecase }}</h1>
 
-    <div class="flex gap-2">
+    <div class="flex gap-2 mt-4">
       @for (type of pokemon().types; track $index) {
       <div class="tag tag--{{ type }}">
         <img src="assets/img/{{ type }}.png" [alt]="type" class="h-4" />
