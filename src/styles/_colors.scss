@@ -1,0 +1,36 @@
+
+$percentage: 25%;
+$types: (
+  grass: #75ce6b,
+  poison: #b950db,
+  fire: #ff6f4b,
+  water: #61aef1,
+  bug: #95c22e,
+  flying: #80a1dd
+);
+
+:root {
+  @each $name, $color in $types {
+    --#{$name}-color: #{$color};
+    --#{$name}-light: #{lighten($color, $percentage)};
+    --#{$name}-dark: #{darken($color, $percentage)};
+  }
+}
+
+@mixin pokemon-class($name, $color) {
+  .bg--#{$name} {
+    background-color: var(--#{$name}-color);
+  }
+  .bg--#{$name}--light {
+    background-color: var(--#{$name}-light);
+  }
+  .bg--#{$name}--dark {
+    background-color: var(--#{$name}-dark);
+  }
+}
+
+@each $name, $color in $types {
+  @include pokemon-class($name, $color);
+}
+
+// #6b75ce
