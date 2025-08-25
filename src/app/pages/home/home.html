@@ -1,1 +1,23 @@
-<p>home works!</p>
+<section>
+  <article class="mb-12">
+    <h1 class="text-4xl mb-4">Find your favorite Pokemon</h1>
+  </article>
+
+  <article>
+    @defer () {
+    <div class="grid grid-cols-12 gap-6 mt-6">
+      @for (pokemon of pokemons(); track $index) {
+      <app-pokemon-card
+        [pokemon]="pokemon"
+        class="col-span-12 md:col-span-6 lg:col-span-4"
+      />
+      } @empty {
+      <p class="col-span-12">Lista vacía</p>
+      }
+    </div>
+
+    } @placeholder {
+    <p>skeleton...</p>
+    }
+  </article>
+</section>

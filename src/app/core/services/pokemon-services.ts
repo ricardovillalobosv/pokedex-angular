@@ -15,7 +15,7 @@ export class PokemonServices {
   protected readonly pokemonUrl = 'https://pokeapi.co/api/v2';
   private http = inject(HttpClient);
 
-  getPokemons(offset: number, limit: number) {
+  getPokemons(offset: number, limit: number): Observable<Pokemon[]> {
     const URL = `${this.pokemonUrl}/pokemon?offset=${offset}&limit=${limit}`;
     return this.http.get<PokemonList>(URL).pipe(
       map((response) => response.results),
