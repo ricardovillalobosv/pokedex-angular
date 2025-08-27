@@ -6,7 +6,19 @@ $types: (
   fire: #ff6f4b,
   water: #61aef1,
   bug: #95c22e,
-  flying: #80a1dd
+  flying: #80a1dd,
+  normal: #858dd8,
+  electric: #e0c600,
+  ground: #f08855,
+  fairy: #e97d6a,
+  gap: #e84968,
+  psychic: #d7a400,
+  fighting: #94b3b8,
+  rock: #b17958,
+  steel: #87b1d0,
+  ghost: #711dcc,
+  ice: #00aeeb,
+  dragon: #4fa7cf
 );
 
 :root {
@@ -32,5 +44,3 @@ $types: (
 @each $name, $color in $types {
   @include pokemon-class($name, $color);
 }
-
-// #6b75ce

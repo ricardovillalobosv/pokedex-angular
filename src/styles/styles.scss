@@ -4,7 +4,7 @@
 @use "tailwindcss/utilities";
 
 .container {
-  @apply w-full md:w-[1100px] mx-auto md:mx-4 pt-16 p-7;
+  @apply w-full md:w-[1100px] mx-auto md:mx-4 pt-16 p-5;
 }
 
 @import "./colors"
