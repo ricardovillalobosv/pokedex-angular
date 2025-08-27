@@ -1,43 +1,41 @@
-<section>
-  <article class="mb-12">
-    <h1 class="text-4xl mb-4">Find your favorite Pokemon</h1>
-  </article>
+<main class="flex justify-center h-dvh">
+  <section class="container">
+    <article class="mb-12">
+      <h1 class="text-4xl font-medium mb-4">Find your favorite Pokemon</h1>
+    </article>
 
-  <article>
-    @defer () {
-    <div class="grid grid-cols-12 gap-6 mt-6">
-      @for (pokemon of pokemons(); track $index) {
-      <app-pokemon-card
-        [pokemon]="pokemon"
-        class="col-span-12 md:col-span-6 lg:col-span-4"
-      />
-      } @empty {
-      <p class="col-span-12">Lista vacía</p>
+    <article>
+      @defer () {
+      <div class="grid grid-cols-12 gap-6 mt-6">
+        @for (pokemon of pokemons(); track $index) {
+        <app-pokemon-card
+          [pokemon]="pokemon"
+          class="col-span-12 md:col-span-6 lg:col-span-4"
+        />
+        }
+      </div>
+
       }
+    </article>
+
+    @if (loading()) {
+    <div class="flex justify-center mt-6 p-10">
+      <div
+        class="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-green-600"
+      ></div>
     </div>
-
-    } @placeholder {
-    <p>skeleton...</p>
+    } 
+    
+    @if (pokemons().length && !this.loading()) {
+    <article class="flex justify-center mt-6 p-10">
+      <button
+        (click)="viewMore()"
+        [disabled]="loading()"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        View more
+      </button>
+    </article>
     }
-  </article>
-
-  @if (loading()) {
-  <div class="flex justify-center mt-6 p-10">
-    <div
-      class="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-green-600"
-    ></div>
-  </div>
-  }
-  
-  @if (pokemons().length && !this.loading()) {
-  <article class="flex justify-center mt-6 p-10">
-    <button
-      (click)="viewMore()"
-      [disabled]="loading()"
-      class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-    >
-      View more
-    </button>
-  </article>
-  }
-</section>
+  </section>
+</main>

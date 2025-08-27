@@ -9,11 +9,12 @@ import {
 import { PokemonServices } from '@core/services/pokemon-services';
 import { Pokemon } from '@core/models/pokemon.model';
 import { SerializationPipe } from '@core/pipes/serialization-pipe';
-import { TitleCasePipe } from '@angular/common';
+import { TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { Tag } from '@components/tag/tag';
 
 @Component({
   selector: 'app-pokemon',
-  imports: [SerializationPipe, TitleCasePipe],
+  imports: [SerializationPipe, TitleCasePipe, UpperCasePipe, Tag],
   templateUrl: './pokemon-page.html',
   styleUrl: './pokemon-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -44,5 +45,14 @@ export default class PokemonPage implements OnInit {
         this.loading.set(false);
       },
     });
+  }
+
+  get firstType() {
+    const pokemon = this.pokemon();
+    if (!pokemon || !pokemon.types?.length) {
+      return '';
+    }
+
+    return pokemon.types[0];
   }
 }

@@ -1,35 +1,49 @@
-<section>
-  <article>
-    <h1>{{ pokemon().name | titlecase }}</h1>
-    <h2>#{{ pokemon().id | serialization }}</h2>
-    <img [src]="pokemon().imageUrl" [alt]="pokemon().name" />
+<section class="">
+  @defer (on viewport) {
+  <article
+    class="flex flex-col items-center pt-16 p-7 bg--{{ firstType }}--light"
+  >
+    <h1 class="text-4xl font-bold">{{ pokemon().name | titlecase }}</h1>
+    <h2 class="text-xl">#{{ pokemon().id | serialization }}</h2>
+    <img [src]="pokemon().imageUrl" [alt]="pokemon().name" class="h-60" />
     <div class="flex gap-2 mt-4">
       @for (type of pokemon().types; track $index) {
-      <div class="tag tag--{{ type }}">
-        <img src="assets/img/{{ type }}.png" [alt]="type" class="h-4" />
-        <span class="tag__text">{{ type | titlecase }}</span>
-      </div>
+      <app-tag [tag]="type" />
       }
     </div>
   </article>
 
-  <article>
-    <h3>Pokedex data</h3>
+  <article class="p-7">
+    <h3 class="text-2xl font-semibold">Pokedex data</h3>
     <div class="grid grid-cols-6 gap-2 mt-4">
       <div class="col-span-3">
-        <p>{{ pokemon().height }}</p>
-        <p>Height</p>
+        <p class="text-base font-medium -mb-1">Height</p>
+        <p class="text-lg font-medium text-gray-600">
+          {{ pokemon().height }}
+        </p>
       </div>
+
       <div class="col-span-3">
-        <p>{{ pokemon().weight }}</p>
-        <p>Weight</p>
+        <p class="text-base font-medium -mb-1">Weight</p>
+        <p class="text-lg font-medium text-gray-600">
+          {{ pokemon().weight }}
+        </p>
       </div>
-      <div class="col-span-3">
-        @for (ability of pokemon().abilities; track $index) {
-        <span class="mr-2">{{ ability }}</span>
-        }
-        <p>Abilities</p>
+
+      <div class="col-span-6">
+        <p class="text-base font-medium -mb-1">Abilities</p>
+        <p class="text-lg font-medium text-gray-600">
+          @for (ability of pokemon().abilities; track $index) {
+          <span class="mr-2">{{ ability | uppercase }}</span>
+          }
+        </p>
       </div>
     </div>
   </article>
+
+  } @placeholder {
+  <p>skeleton...</p>
+  }
+
+  
 </section>
