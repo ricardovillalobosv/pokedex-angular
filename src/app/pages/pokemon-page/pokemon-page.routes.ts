@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { PokemonAbout } from './pokemon-about/pokemon-about';
-import { PokemonStats } from './pokemon-stats/pokemon-stats';
-import { PokemonEvolution } from './pokemon-evolution/pokemon-evolution';
+import { PokemonAbout } from './sub-pages/pokemon-about/pokemon-about';
+import { PokemonStats } from './sub-pages/pokemon-stats/pokemon-stats';
+import { PokemonEvolution } from './sub-pages/pokemon-evolution/pokemon-evolution';
 import { PokemonPage } from './pokemon-page';
 
 export const pokemonPageRoutes: Routes = [
