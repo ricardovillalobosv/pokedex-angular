@@ -11,15 +11,24 @@ import { Pokemon } from '@core/models/pokemon.model';
 import { SerializationPipe } from '@core/pipes/serialization-pipe';
 import { TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { Tag } from '@components/tag/tag';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon',
-  imports: [SerializationPipe, TitleCasePipe, UpperCasePipe, Tag],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    SerializationPipe,
+    TitleCasePipe,
+    UpperCasePipe,
+    Tag,
+],
   templateUrl: './pokemon-page.html',
   styleUrl: './pokemon-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class PokemonPage implements OnInit {
+export class PokemonPage implements OnInit {
   id = input.required<number>();
   pokemonServices = inject(PokemonServices);
   loading = signal<boolean>(false);
