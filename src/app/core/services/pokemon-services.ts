@@ -44,7 +44,7 @@ export class PokemonServices {
   searchPokemon(value: number | string): Observable<Pokemon> {
     const URL = `${this.pokemonUrl}/pokemon/${value}`;
     return this.http.get<PokemonRESTData>(URL).pipe(
-      map(({ id, name, types, height, weight, abilities }) => {
+      map(({ id, name, types, height, weight, abilities, stats }) => {
         const _types = this.getTypes(types);
         const _height = height ? (height / 10).toFixed(1) : '-';
         const _weight = weight ? (weight / 10).toFixed(1) : '-';
@@ -52,6 +52,7 @@ export class PokemonServices {
         return {
           id,
           name,
+          stats,
           types: _types,
           height: `${_height}m`,
           weight: `${_weight}kg`,
