@@ -1,4 +1,5 @@
 export interface EvolutionData {
+  id: number;
   name: string;
   imageUrl: string;
 }

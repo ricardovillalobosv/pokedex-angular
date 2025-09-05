@@ -105,6 +105,7 @@ export class PokemonServices {
     const id = chain.species.url.split('/').filter(Boolean).pop();
 
     result.push({
+      id: Number(id),
       name: chain.species.name,
       imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`,
     });

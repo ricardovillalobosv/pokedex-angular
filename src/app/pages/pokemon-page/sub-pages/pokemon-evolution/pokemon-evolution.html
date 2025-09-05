@@ -1,1 +1,7 @@
-
+<div class="flex flex-col items-center gap-8 my-4">
+  @for (item of evolutionData(); track $index) {
+  <app-simple-card-pokemon [evolutionData]="item" />
+  @if ($index < evolutionData().length - 1) {
+  <div class="arrow"></div>
+  } }
+</div>

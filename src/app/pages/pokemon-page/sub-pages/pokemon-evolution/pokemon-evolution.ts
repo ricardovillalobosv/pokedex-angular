@@ -10,10 +10,11 @@ import { EvolutionData } from '@core/models/evolution-result.model';
 import { PokemonServices } from '@core/services/pokemon-services';
 import { SharedPokemonDataService } from '@core/services/shared-pokemon-data';
 import { Subscription } from 'rxjs';
+import { SimpleCardPokemon } from '../../components/simple-card-pokemon/simple-card-pokemon';
 
 @Component({
   selector: 'app-pokemon-evolution',
-  imports: [],
+  imports: [SimpleCardPokemon],
   templateUrl: './pokemon-evolution.html',
   styleUrl: './pokemon-evolution.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,7 +28,7 @@ export class PokemonEvolution implements OnInit, OnDestroy {
 
   pokemonServices = inject(PokemonServices);
 
-  evolutionChain = signal<EvolutionData[]>([]);
+  evolutionData = signal<EvolutionData[]>([]);
 
   ngOnInit(): void {
     this.getSpeciesUrl();
@@ -52,8 +53,8 @@ export class PokemonEvolution implements OnInit, OnDestroy {
     if (!this.id()) return;
 
     this.pokemonServices.getEvolutionChain(this.id()).subscribe({
-      next: (evolutionChain) => {
-        this.evolutionChain.set(evolutionChain);
+      next: (evolutionData) => {
+        this.evolutionData.set(evolutionData);
       },
       complete: () => {
         this.loading.set(false);
