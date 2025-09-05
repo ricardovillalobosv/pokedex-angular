@@ -32,7 +32,7 @@ export class PokemonPage implements OnInit, OnDestroy {
   id = input.required<number>();
 
   pokemonServices = inject(PokemonServices);
-  loading = signal<boolean>(false);
+  loading = signal<boolean>(true);
   pokemon = signal<Pokemon>({});
 
   sharedPokemonDataService = inject(SharedPokemonDataService);
@@ -48,6 +48,7 @@ export class PokemonPage implements OnInit, OnDestroy {
 
   searchPokemon() {
     this.loading.set(true);
+    this.sharedPokemonDataService.updateLoading(this.loading());
 
     if (!this.id()) return;
 
@@ -56,7 +57,6 @@ export class PokemonPage implements OnInit, OnDestroy {
       .subscribe({
         next: (response: Pokemon) => {
           this.sharedPokemonDataService.updatePokemon(response);
-
           this.pokemon.set(response);
         },
         error: (error) => {
@@ -64,6 +64,7 @@ export class PokemonPage implements OnInit, OnDestroy {
         },
         complete: () => {
           this.loading.set(false);
+          this.sharedPokemonDataService.updateLoading(this.loading());
         },
       });
   }
