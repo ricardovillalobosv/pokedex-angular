@@ -1,1 +1,25 @@
-<p>pokemon-stats works!</p>
+<article class="my-4">
+  <h3 class="text-2xl font-semibold">Base Stats</h3>
+  <table class="w-full max-w-[750px] mt-4">
+    @for (stat of stats(); track $index) {
+    <tr class="grid grid-cols-[1fr_0.85fr] sm:grid-cols-[0.3fr_0.7fr] gap-4">
+      <td class="col-span-1">
+        <div class="flex justify-between">
+          <p class="text-base font-medium">{{ stat.stat?.name | titlecase }}</p>
+          <p class="text-lg font-medium text-gray-600">{{ stat.base_stat }}</p>
+        </div>
+      </td>
+      <td class="col-span-1">
+        <div class="flex items-center h-full">
+          <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div
+              class="bg-blue-600 h-2.5 rounded-full"
+              [style]="buildWidth(stat.base_stat || 0)"
+            ></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    }
+  </table>
+</article>
