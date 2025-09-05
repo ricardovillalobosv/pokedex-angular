@@ -1,29 +1,19 @@
-<section class="">
-  @defer (on viewport) {
-  <article
-    class="flex flex-col items-center pt-16 p-7 bg--{{ firstType }}--light"
-  >
-    <h1 class="text-4xl font-bold">{{ pokemon().name | titlecase }}</h1>
-    <h2 class="text-xl">#{{ pokemon().id | serialization }}</h2>
-    <img [src]="pokemon().imageUrl" [alt]="pokemon().name" class="h-60" />
-    <div class="flex gap-2 mt-4">
-      @for (type of pokemon().types; track $index) {
-      <app-tag [tag]="type" />
-      }
-    </div>
-  </article>
+<section>
+  @if (loading()) {
+  <app-skeleton-card-pokemon-page />
+  } @else {
+  <app-card-pokemon-page [pokemon]="pokemon()" />
+  }
 
   <article class="p-7">
     <div class="flex gap-4 mb-2">
       <a [routerLink]="['about']" routerLinkActive="tab--active">About</a>
       <a [routerLink]="['stats']" routerLinkActive="tab--active">Base Stats</a>
-      <a [routerLink]="['evolution']" routerLinkActive="tab--active">Evolutions</a>
+      <a [routerLink]="['evolution']" routerLinkActive="tab--active"
+        >Evolutions</a
+      >
     </div>
-    
+
     <router-outlet />
   </article>
-
-  } @placeholder {
-  <p>skeleton...</p>
-  }
 </section>

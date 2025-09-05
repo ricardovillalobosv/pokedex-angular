@@ -9,12 +9,11 @@ import {
 } from '@angular/core';
 import { PokemonServices } from '@core/services/pokemon-services';
 import { Pokemon } from '@core/models/pokemon.model';
-import { SerializationPipe } from '@core/pipes/serialization-pipe';
-import { TitleCasePipe } from '@angular/common';
-import { Tag } from '@components/tag/tag';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { SharedPokemonDataService } from '@core/services/shared-pokemon-data';
 import { Subscription } from 'rxjs';
+import { CardPokemonPage } from './components/card-pokemon-page/card-pokemon-page';
+import { SkeletonCardPokemonPage } from './components/skeleton-card-pokemon-page/skeleton-card-pokemon-page';
 
 @Component({
   selector: 'app-pokemon',
@@ -22,9 +21,8 @@ import { Subscription } from 'rxjs';
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
-    SerializationPipe,
-    TitleCasePipe,
-    Tag,
+    CardPokemonPage,
+    SkeletonCardPokemonPage,
   ],
   templateUrl: './pokemon-page.html',
   styleUrl: './pokemon-page.scss',
@@ -46,15 +44,6 @@ export class PokemonPage implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.servicesSubscription?.unsubscribe();
-  }
-
-  get firstType() {
-    const pokemon = this.pokemon();
-    if (!pokemon || !pokemon.types?.length) {
-      return '';
-    }
-
-    return pokemon.types[0];
   }
 
   searchPokemon() {
