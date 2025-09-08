@@ -1,3 +1,4 @@
+@defer () {
 <article
   [routerLink]="['/pokemon', evolutionData().id]"
   class="flex flex-col items-center py-2 cursor-pointer"
@@ -10,3 +11,4 @@
   <h1 class="text-xl font-medium">{{ evolutionData().name | titlecase }}</h1>
   <h2 class="-m-1 text-l">#{{ evolutionData().id | serialization }}</h2>
 </article>
+}

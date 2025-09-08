@@ -11,10 +11,11 @@ import { PokemonServices } from '@core/services/pokemon-services';
 import { SharedPokemonDataService } from '@core/services/shared-pokemon-data';
 import { Subscription } from 'rxjs';
 import { SimpleCardPokemon } from '../../components/simple-card-pokemon/simple-card-pokemon';
+import { SkeletonEvolution } from '../../components/skeleton-evolution/skeleton-evolution';
 
 @Component({
   selector: 'app-pokemon-evolution',
-  imports: [SimpleCardPokemon],
+  imports: [SimpleCardPokemon, SkeletonEvolution],
   templateUrl: './pokemon-evolution.html',
   styleUrl: './pokemon-evolution.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
