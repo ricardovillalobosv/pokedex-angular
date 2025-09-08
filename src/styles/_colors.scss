@@ -1,4 +1,3 @@
-
 $percentage: 25%;
 $types: (
   grass: #75ce6b,
@@ -18,7 +17,7 @@ $types: (
   steel: #87b1d0,
   ghost: #711dcc,
   ice: #00aeeb,
-  dragon: #4fa7cf
+  dragon: #4fa7cf,
 );
 
 :root {
@@ -38,6 +37,10 @@ $types: (
   }
   .bg--#{$name}--dark {
     background-color: var(--#{$name}-dark);
+  }
+
+  .color--#{$name}--dark {
+    color: var(--#{$name}-dark);
   }
 }
 

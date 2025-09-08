@@ -1,11 +1,11 @@
-<section>
+<section class="flex flex-col sm:flex-row">
   @if (loading()) {
   <app-skeleton-card-pokemon-page />
   } @else {
   <app-card-pokemon-page [pokemon]="pokemon()" />
   }
 
-  <article class="p-7">
+  <article class="p-7 flex-1">
     <div class="flex gap-4 mb-2">
       <a [routerLink]="['about']" routerLinkActive="tab--active">About</a>
       <a [routerLink]="['stats']" routerLinkActive="tab--active">Base Stats</a>

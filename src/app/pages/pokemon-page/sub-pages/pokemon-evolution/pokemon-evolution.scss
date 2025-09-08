@@ -5,6 +5,10 @@
   transform: rotate(135deg);
   position: relative;
 
+  @media (min-width: 640px) {
+    transform: rotate(45deg);
+  }
+
   &::before {
     content: "";
     width: 100%;
