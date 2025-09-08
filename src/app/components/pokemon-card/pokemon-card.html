@@ -2,7 +2,7 @@
   [routerLink]="['/pokemon', pokemon().id]"
   class="card bg--{{ firstType }}--light"
 >
-  @defer(on viewport) {
+  @defer() {
   <div class="card__descripiton">
     <h3 class="card__number color--{{ firstType }}--dark">
       #{{ pokemon().id | serialization }}
@@ -18,7 +18,5 @@
     </div>
   </div>
   <img [src]="pokemon().imageUrl" [alt]="pokemon().name" class="card__img" />
-  } @placeholder {
-  <p>test cargando</p>
   }
 </article>
