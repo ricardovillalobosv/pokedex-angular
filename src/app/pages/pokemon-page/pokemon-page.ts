@@ -3,9 +3,11 @@ import {
   Component,
   inject,
   input,
+  OnChanges,
   OnDestroy,
   OnInit,
   signal,
+  SimpleChanges,
 } from '@angular/core';
 import { PokemonServices } from '@core/services/pokemon-services';
 import { Pokemon } from '@core/models/pokemon.model';
@@ -28,7 +30,7 @@ import { SkeletonCardPokemonPage } from './components/skeleton-card-pokemon-page
   styleUrl: './pokemon-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PokemonPage implements OnInit, OnDestroy {
+export class PokemonPage implements OnInit, OnDestroy, OnChanges {
   id = input.required<number>();
 
   pokemonServices = inject(PokemonServices);
@@ -40,6 +42,12 @@ export class PokemonPage implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.searchPokemon();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['id'] && !changes['id'].firstChange) {
+      this.searchPokemon();
+    }
   }
 
   ngOnDestroy(): void {
